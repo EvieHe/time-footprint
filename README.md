@@ -52,3 +52,13 @@ npm run build   # Vite renderer production build
 2. Test audio on headphones: all three channels, independently, mixed, muted, faded on finish.
 3. Verify DST, sleep/wake, and 24-hour day projection across timezone changes.
 4. Add a signed DMG release workflow only after smoke tests.
+
+
+## v0.4 interaction and desktop verification
+
+- Week/day activity blocks share a single fixed-position custom tooltip, with keyboard focus and click-to-edit.
+- Immersive controls are deliberately compact, with a separate spacious vertical ambient mixer and full-width channel sliders.
+- Electron closes the window to the menu-bar tray. After a system suspend/resume, the renderer refreshes persisted sessions and warns when elapsed sleep exceeds one minute. Sleep time is **not silently removed** from tracked activity; users should review and correct sessions when necessary.
+- Core tests: `npm test` (Node domain, SQLite integration and synthesized audio).
+- Real Electron GUI regression suite: `npm run test:e2e` (requires dependencies, Electron runtime and a GUI display; on macOS it can be run locally). This test covers day/week navigation, direct focus start, and mixer open/close. A passing script does **not** by itself validate suspension or macOS notification behavior.
+- Build: `npm run build`. Packaging/notarization and sleep/wake are subject to macOS manual verification.
