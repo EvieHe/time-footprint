@@ -124,3 +124,52 @@ button:not(:disabled):active{transform:scale(.975)}
   :root{--motion-fast:0ms;--motion-control:0ms;--motion-surface:0ms;--motion-scene:0ms}
   *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
+
+/* v0.6 — mineral, linen and soft botanical palette; one restrained accent per activity */
+:root{--tf-ink:#344940;--tf-muted:#84968b;--tf-paper:#f7f7f2;--tf-line:#e5ebe3;--tf-green:#7cae9d;--tf-ease:cubic-bezier(.22,1,.36,1)}
+.daily-view{color:var(--tf-ink);animation:tf-calendar-in .38s var(--tf-ease) both}
+.daily-view-head{display:flex;justify-content:space-between;align-items:center;gap:20px;margin:8px 0 28px}
+.daily-kicker{font-size:10px;letter-spacing:2px;color:#9bae9e}
+.daily-view-head h3{font-size:25px;font-weight:500;letter-spacing:.3px;margin:8px 0}
+.daily-view-head p{font-size:12px;color:#91a296;margin:0}
+.daily-switch{display:flex;gap:4px;border:1px solid #e5ece4;border-radius:999px;background:#f4f7f1;padding:4px}
+.daily-switch button{padding:9px 16px;border-radius:999px;color:#7b9184;background:transparent;font-size:11px}
+.daily-switch button.selected{background:white;box-shadow:0 3px 13px #415f4817;color:#446b58}
+.daily-summary{padding:24px;border-radius:18px;background:linear-gradient(120deg,#f6f8f4,#faf8f4);border:1px solid #e9eee7}
+.daily-summary>span{color:#657f70;font-size:12px}
+.daily-mini-track{height:12px;background:#e8ede7;border-radius:999px;position:relative;overflow:hidden;margin:20px 0 10px}
+.daily-mini-track i{position:absolute;top:0;bottom:0;border-radius:4px;opacity:.89}
+.daily-ticks{display:flex;justify-content:space-between;font-size:10px;color:#a1afa4}
+.journal-flow{padding:32px 4px 4px}
+.journal-row{display:grid;grid-template-columns:52px 20px 1fr;gap:14px;min-height:90px}
+.journal-hour{padding-top:17px;font-size:12px;font-variant-numeric:tabular-nums;color:#90a195;text-align:right}
+.journal-spine{position:relative;display:flex;justify-content:center;padding-top:22px}
+.journal-spine:after{content:"";position:absolute;top:34px;bottom:0;width:1px;background:#e3eae2}
+.journal-row:last-child .journal-spine:after{display:none}
+.journal-spine i{width:9px;height:9px;border-radius:50%;z-index:1;box-shadow:0 0 0 4px #f6f8f4}
+.journal-entry{min-width:0;background:#fff;border:1px solid #e8eee7;border-radius:16px;margin-bottom:18px;box-shadow:0 5px 20px #496e5210;overflow:hidden;transition:box-shadow .28s var(--tf-ease),border-color .28s}
+.journal-entry:hover,.journal-entry.expanded{border-color:#cbdccf;box-shadow:0 12px 32px #496e5219}
+.journal-entry-main{width:100%;display:flex;align-items:center;text-align:left;gap:15px;padding:18px;background:transparent}
+.journal-entry-icon{display:grid;place-items:center;flex-shrink:0;width:40px;height:40px;border-radius:13px}
+.journal-entry-content{display:flex;flex-direction:column;gap:7px;min-width:0;flex:1}
+.journal-entry-content strong{font-size:13px;color:#40594a;font-weight:600}
+.journal-entry-content small{font-size:11px;color:#93a498;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.journal-duration{font-size:11px;color:#829b8a;white-space:nowrap}
+.journal-chevron{flex-shrink:0;color:#9caf9f;transition:transform .25s var(--tf-ease)}
+.journal-entry.expanded .journal-chevron{transform:rotate(90deg)}
+.journal-entry-detail{border-top:1px solid #edf1eb;padding:16px 20px 20px;animation:tf-calendar-in .28s var(--tf-ease)}
+.journal-entry-detail>div{color:#799483;font-size:11px}
+.journal-entry-detail p{font-size:12px;color:#647d6d;line-height:1.7}
+.journal-entry-detail button,.journal-add{display:inline-flex;align-items:center;gap:8px;border-radius:10px;background:#eef5ed;color:#577d65;padding:10px 14px;font-size:11px}
+.journal-add{margin:8px 0 14px 86px}
+.journal-empty{font-size:13px;color:#99aa9f;padding:30px 20px}
+.imm-note-wrap{width:min(390px,88vw);margin-top:10px}
+.imm-note-wrap .intention-toggle{width:100%;justify-content:center;border:1px solid #ffffff30;border-radius:14px;background:#ffffff0b;padding:13px 18px;line-height:1.5}
+.imm-note-wrap .intention-toggle span{margin-left:auto;color:#e8f4e6a9;font-size:10px}
+.imm-note-editor{margin-top:10px;padding:13px;border:1px solid #ffffff40;border-radius:16px;background:#163f4080;box-shadow:0 15px 45px #0d343733;animation:tf-dialog-in .32s var(--tf-ease)}
+.imm-note-editor .intention-inline{display:block;margin:0;width:100%;box-sizing:border-box;min-height:90px;background:#ffffff12;border:1px solid #ffffff2c}
+.imm-note-actions{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:10px}
+.imm-note-actions span{font-size:10px;color:#e6eee6ad}
+.imm-note-actions button{display:flex;gap:6px;align-items:center;padding:9px 12px;border-radius:999px;background:#edf3e8;color:#34594c;font-size:11px}
+@media(max-width:700px){.daily-view-head{align-items:flex-start;flex-direction:column}.journal-row{grid-template-columns:42px 14px 1fr;gap:8px}.journal-entry-main{gap:9px;padding:12px}.journal-duration{display:none}.journal-add{margin-left:55px}}
+@media(prefers-reduced-motion:reduce){.daily-view,.journal-entry-detail,.imm-note-editor{animation:none!important}}
