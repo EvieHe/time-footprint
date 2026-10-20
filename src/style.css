@@ -71,3 +71,56 @@
 .mute-all:hover{background:#eaf0e8}
 @media(max-width:680px){.sound-dock{right:16px;top:65px}.immersive-top{padding:20px}.breath-sphere{height:148px;width:148px}}
 @media(prefers-reduced-motion:reduce){.sound-dock,.breath-sphere{animation:none}.sound-list label input[type=range]::-webkit-slider-thumb{transition:none}}
+
+
+/* Time Footprint v0.5 · Motion design system.
+   Motion follows intent: micro-response -> surface reveal -> spatial transition. */
+:root{
+  --motion-fast:160ms;
+  --motion-control:240ms;
+  --motion-surface:340ms;
+  --motion-scene:580ms;
+  --motion-out:cubic-bezier(.22,1,.36,1);
+  --motion-soft:cubic-bezier(.2,.75,.22,1);
+  --motion-in:cubic-bezier(.4,0,1,1);
+  --motion-focus:#88b69e;
+}
+button{ -webkit-tap-highlight-color:transparent; }
+button:not(:disabled){transition-property:background-color,border-color,color,box-shadow,filter,transform,opacity;transition-duration:var(--motion-control);transition-timing-function:var(--motion-out)}
+button:disabled{opacity:.52;cursor:not-allowed}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--motion-focus);outline-offset:3px}
+button:not(:disabled):active{transform:scale(.975)}
+.navitem:not(:disabled):active,.shortcut:not(:disabled):active,.launch-activity:not(:disabled):active{transform:scale(.982)}
+.navitem{position:relative;isolation:isolate}
+.navitem:hover:not(.active){background:#eaf0e9}
+.navitem.active{transition:background-color var(--motion-surface) var(--motion-out),color var(--motion-control) ease}
+.shortcut-shell,.moment,.stat,.calendar-card{transition:box-shadow var(--motion-surface) var(--motion-out),border-color var(--motion-surface) ease,transform var(--motion-surface) var(--motion-out)}
+.shortcut-shell:hover{transform:translateY(-2px)}
+.moment:hover{transform:translateY(-2px)}
+.icon-button:hover:not(:disabled){transform:translateY(-1px)}
+.icon-button:active:not(:disabled){transform:scale(.94)}
+/* Gentle reveal that preserves a visual connection to the originating control. */
+.modal-cover{animation:tf-backdrop-in var(--motion-surface) ease-out both}
+.modal{transform-origin:50% 70%;animation:tf-dialog-in 410ms var(--motion-out) both;will-change:transform,opacity}
+@keyframes tf-backdrop-in{from{opacity:0;backdrop-filter:blur(0px)}to{opacity:1;backdrop-filter:blur(8px)}}
+@keyframes tf-dialog-in{from{opacity:0;transform:translateY(20px) scale(.965);filter:blur(4px)}to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
+.activity-tooltip{transform-origin:50% 100%;animation:tf-tooltip-in var(--motion-control) var(--motion-out) both}
+@keyframes tf-tooltip-in{from{opacity:0;filter:blur(3px)}to{opacity:1;filter:blur(0)}}
+.immersive{animation:tf-scene-in var(--motion-scene) var(--motion-soft) both}
+.immersive-center{animation:tf-content-in 660ms var(--motion-out) both}
+.immersive-top{animation:tf-content-in 470ms var(--motion-out) both}
+@keyframes tf-scene-in{from{opacity:0}to{opacity:1}}
+@keyframes tf-content-in{from{opacity:0;transform:translateY(15px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
+.sound-dock{transform-origin:90% 0;animation:tf-mixer-in var(--motion-surface) var(--motion-out) both}
+@keyframes tf-mixer-in{from{opacity:0;transform:translateY(-10px) scale(.965);filter:blur(4px)}to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
+.sound-list label{transition:background-color var(--motion-control) ease,border-color var(--motion-control) ease}
+.sound-list input[type=range]{transition:background 90ms linear,box-shadow var(--motion-fast) ease}
+.sound-list input[type=range]:active::-webkit-slider-thumb{transform:scale(1.2);box-shadow:0 0 0 8px #7cae9d28,0 4px 16px #406f593b}
+.view-toggle .picked{box-shadow:0 2px 9px #274b3512;transition:background var(--motion-control) var(--motion-out),box-shadow var(--motion-control) var(--motion-out)}
+.week-chart,.day-chart{animation:tf-calendar-in var(--motion-surface) var(--motion-soft) both}
+@keyframes tf-calendar-in{from{opacity:.35;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.track-block,.day-block{transition:filter var(--motion-fast) ease,box-shadow var(--motion-fast) ease,background-color var(--motion-control) ease}
+@media(prefers-reduced-motion:reduce){
+  :root{--motion-fast:0ms;--motion-control:0ms;--motion-surface:0ms;--motion-scene:0ms}
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
