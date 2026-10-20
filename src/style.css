@@ -173,3 +173,17 @@ button:not(:disabled):active{transform:scale(.975)}
 .imm-note-actions button{display:flex;gap:6px;align-items:center;padding:9px 12px;border-radius:999px;background:#edf3e8;color:#34594c;font-size:11px}
 @media(max-width:700px){.daily-view-head{align-items:flex-start;flex-direction:column}.journal-row{grid-template-columns:42px 14px 1fr;gap:8px}.journal-entry-main{gap:9px;padding:12px}.journal-duration{display:none}.journal-add{margin-left:55px}}
 @media(prefers-reduced-motion:reduce){.daily-view,.journal-entry-detail,.imm-note-editor{animation:none!important}}
+
+/* Copy-led visual cleanup: let controls and hierarchy carry the meaning. */
+.hero{min-height:112px;padding:0 0 25px}
+.hero h1{margin:0;font-size:36px;letter-spacing:.5px}
+.hero-orb{width:98px;height:98px;margin-right:15px;opacity:.76}
+.launch-strip{padding:14px 18px;gap:18px;margin:0 0 21px;background:#f1f5ef}
+.launch-strip strong{font-size:13px}
+.launch-config{min-height:57px;gap:7px}
+.launch-types .launch-config{padding:10px 13px}
+.launch-types .launch-now{min-height:31px}
+.sidebar .shortcut-plus{display:none}
+.section-head h2{margin-bottom:3px}
+.imm-note-actions span:empty{display:none}
+@media(max-width:750px){.hero{min-height:80px}.hero h1{font-size:30px}}
