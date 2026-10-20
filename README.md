@@ -34,7 +34,7 @@ npm run build   # Vite renderer production build
 
 ## Validation status
 
-- **10 node tests passed** in the development container: transitions, pause subtraction, cross-midnight projection, recovery calculation, reversed manual ranges, serialization, invalid transitions, Web Audio mixing/fades, validation.
+- **12 node tests passed** in the development container: transitions, pause subtraction, cross-midnight projection, recovery calculation, reversed manual ranges, serialization, invalid transitions, Web Audio mixing/fades, validation, and SQLite repository persistence via Node built-in SQLite compatibility shim.
 - The target Electron/macOS window, native SQLite addon, and GUI interactions **have not been run end-to-end in this container** because installing external npm dependencies was not possible in the environment.
 - SQLite persistence and secure IPC have source implementation but still need on-device smoke tests before the app is considered production-ready.
 
