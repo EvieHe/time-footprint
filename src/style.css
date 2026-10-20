@@ -32,3 +32,42 @@
 .activity-tooltip>small{display:block;border-top:1px solid #edf1ec;padding-top:9px;margin-top:12px;color:#9aaba0;font-size:10px}
 @keyframes tooltip-appear{from{opacity:0;filter:blur(2px)}to{opacity:1;filter:blur(0)}}
 @media(prefers-reduced-motion:reduce){.activity-tooltip{animation:none}}
+
+/* v0.4 — Quiet surfaces, shared geometry and a spacious vertical mixer */
+.track-block{border-radius:5px;background-clip:padding-box;cursor:pointer;outline-offset:3px;transition:filter .18s ease,box-shadow .18s ease}
+.track-block:hover,.track-block:focus-visible{z-index:4;filter:brightness(1.07);box-shadow:0 0 0 2px #ffffffc9,0 3px 10px #2d503628}
+.track-block:focus-visible{outline:2px solid #517b67}
+.day-block,.day-block-compact{border-radius:7px;transition:filter .18s ease,box-shadow .18s ease}
+.activity-tooltip{border-radius:13px;box-shadow:0 12px 36px #223a2c23,0 1px 5px #223a2c0a}
+/* Keep the timer itself central; peripheral actions form a quiet single-layer dock. */
+.immersive-top{padding:22px 34px;gap:12px}
+.immersive-top>span{font-size:9px;letter-spacing:2.5px;opacity:.55}
+.immersive-top button{border:1px solid #ffffff27;background:#ffffff13;transition:background .2s,border-color .2s}
+.immersive-top button:hover,.immersive-top button:focus-visible{background:#ffffff2d;border-color:#ffffff72}
+.immersive-center{min-height:360px}
+.breath-sphere{width:178px;height:178px;margin:12px 0 6px;animation-duration:10s}
+.imm-time{font-size:clamp(46px,6vw,72px);font-weight:300;letter-spacing:2px}
+.imm-title{background:transparent;border:1px solid transparent;border-radius:10px;transition:border-color .18s,background .18s}
+.imm-title:hover,.imm-title:focus{background:#ffffff10;border-color:#ffffff50}
+.imm-controls{margin-top:18px}
+.sound-dock{position:fixed;top:78px;right:28px;bottom:auto;left:auto;align-self:auto;width:min(370px,calc(100vw - 40px));max-height:calc(100vh - 100px);overflow:auto;border-radius:22px;padding:25px;background:rgba(249,250,245,.97);box-shadow:0 24px 75px #0b2d3955,0 2px 8px #102e3820;z-index:12;animation:rise .22s cubic-bezier(.2,.8,.2,1)}
+.dock-heading{gap:10px;align-items:center;font-size:14px;color:#3d6253}
+.dock-heading small{display:none}
+.dock-close{margin-left:auto;border-radius:50%;height:30px;width:30px;display:grid;place-items:center;background:#ebf1e9;color:#709183;transition:background .16s}
+.dock-close:hover{background:#dce8dc}
+.sound-presets{margin:20px 0 8px;gap:8px}
+.sound-presets button{padding:9px 13px;border-radius:999px;background:#e9f0e8;color:#648674;transition:background .2s,transform .2s}
+.sound-presets button:hover{background:#dceadd;transform:translateY(-1px)}
+.sound-list{display:flex;flex-direction:column;gap:0;margin-top:16px}
+.sound-list label{display:grid;grid-template-columns:1fr auto;column-gap:12px;row-gap:14px;padding:18px 0;border-top:1px solid #e7eee6;align-items:center}
+.sound-list label span{grid-column:1;min-width:0;font-size:13px;font-weight:550}
+.sound-list label small{margin-top:5px;font-size:10px;font-weight:400;color:#a0b2a4}
+.sound-list label em{grid-column:2;grid-row:1;font-variant-numeric:tabular-nums;font-size:12px;color:#7c9987}
+.sound-list label input[type=range]{grid-column:1/-1;grid-row:2;display:block;width:100%;height:7px;min-width:0;margin:0;cursor:pointer;appearance:none;-webkit-appearance:none;border-radius:999px;outline:none;background:linear-gradient(to right,#7cae9d 0%,#7cae9d var(--level),#e0e9df var(--level),#e0e9df 100%)}
+.sound-list label input[type=range]::-webkit-slider-thumb{appearance:none;-webkit-appearance:none;width:20px;height:20px;border-radius:50%;border:4px solid #fff;background:#78a996;box-shadow:0 2px 10px #406f593d;transition:transform .17s ease,box-shadow .17s ease}
+.sound-list label input[type=range]:hover::-webkit-slider-thumb,.sound-list label input[type=range]:focus-visible::-webkit-slider-thumb{transform:scale(1.12);box-shadow:0 0 0 5px #7cae9d26,0 3px 12px #406f5940}
+.sound-list label input[type=range]:focus-visible{outline:2px solid #8db9a7;outline-offset:5px}
+.mute-all{margin:10px 0 0 auto;padding:9px 12px;border-radius:10px;transition:background .2s}
+.mute-all:hover{background:#eaf0e8}
+@media(max-width:680px){.sound-dock{right:16px;top:65px}.immersive-top{padding:20px}.breath-sphere{height:148px;width:148px}}
+@media(prefers-reduced-motion:reduce){.sound-dock,.breath-sphere{animation:none}.sound-list label input[type=range]::-webkit-slider-thumb{transition:none}}
