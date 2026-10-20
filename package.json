@@ -8,7 +8,8 @@
     "build": "vite build",
     "start": "electron .",
     "test": "node --test tests/*.test.mjs",
-    "postinstall": "electron-rebuild -f -w better-sqlite3"
+    "postinstall": "electron-rebuild -f -w better-sqlite3",
+    "test:e2e": "playwright test"
   },
   "main": "electron/main.cjs",
   "dependencies": {
@@ -24,6 +25,7 @@
     "typescript": "^5.7.3",
     "vite": "^6.1.0",
     "wait-on": "^8.0.2",
-    "@electron/rebuild": "^3.7.2"
+    "@electron/rebuild": "^3.7.2",
+    "@playwright/test": "^1.55.0"
   }
 }
