@@ -10,6 +10,8 @@ test('desktop: day/week navigation, one-tap focus, and sound controls', async ()
     const page = await app.firstWindow();
     await expect(page.getByText('时间足迹').first()).toBeVisible();
     await page.getByRole('button', { name: /今日回望/ }).click();
+    await expect(page.getByText('A DAY, REMEMBERED')).toBeVisible();
+    await page.getByRole('button', { name: '24 小时' }).click();
     await expect(page.getByText('24 HOURS')).toBeVisible();
     await page.getByRole('button', { name: /时间足迹/ }).first().click();
     await expect(page.getByText('24 HOURS')).toHaveCount(0);
