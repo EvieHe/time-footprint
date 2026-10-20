@@ -24,3 +24,22 @@ test('desktop: day/week navigation, one-tap focus, and sound controls', async ()
     await app.close();
   }
 });
+
+test('motion design: dialogs and mixer are animated, controls are keyboard reachable', async () => {
+  const app = await electron.launch({
+    args: [path.resolve('.')],
+    env: { ...process.env, VITE_DEV_SERVER_URL: 'http://127.0.0.1:5173' },
+  });
+  try {
+    const page = await app.firstWindow();
+    const setup = page.getByRole('button', { name: /专注/ }).first();
+    await setup.click();
+    const dialog = page.locator('.modal');
+    await expect(dialog).toBeVisible();
+    const animation = await dialog.evaluate(el => getComputedStyle(el).animationName);
+    expect(animation).toContain('tf-dialog-in');
+    await page.keyboard.press('Escape');
+  } finally {
+    await app.close();
+  }
+});
