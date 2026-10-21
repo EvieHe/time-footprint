@@ -1,0 +1,46 @@
+name: iOS Simulator Build
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - 'tests/mobile-*.test.mjs'
+      - 'package.json'
+      - 'capacitor.config.ts'
+      - '.github/workflows/mobile-ios-check.yml'
+jobs:
+  ios-simulator:
+    runs-on: macos-26
+    timeout-minutes: 35
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check Xcode version
+        run: xcodebuild -version
+      - name: Install JavaScript packages
+        run: npm install --ignore-scripts --no-audit --no-fund
+      - name: Run core and mobile tests
+        run: |
+          npm test
+          npm run test:mobile
+      - name: Build web assets
+        run: npm run build
+      - name: Generate iOS native project
+        run: |
+          npx cap add ios
+          npx cap sync ios
+      - name: Build iOS Simulator without signing
+        run: |
+          xcodebuild \
+            -project ios/App/App.xcodeproj \
+            -scheme App \
+            -configuration Debug \
+            -destination 'generic/platform=iOS Simulator' \
+            -derivedDataPath "$RUNNER_TEMP/TimeFootprintDerivedData" \
+            CODE_SIGNING_ALLOWED=NO \
+            build
