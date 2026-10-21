@@ -6,6 +6,7 @@ on:
     paths:
       - 'src/**'
       - 'tests/mobile-*.test.mjs'
+      - 'scripts/iphone.sh'
       - 'package.json'
       - 'capacitor.config.ts'
       - '.github/workflows/mobile-ios-check.yml'
@@ -20,6 +21,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Validate Mac install helper syntax
+        run: bash -n scripts/iphone.sh
       - name: Check Xcode version
         run: xcodebuild -version
       - name: Install JavaScript packages
