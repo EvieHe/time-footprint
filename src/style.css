@@ -187,3 +187,22 @@ button:not(:disabled):active{transform:scale(.975)}
 .section-head h2{margin-bottom:3px}
 .imm-note-actions span:empty{display:none}
 @media(max-width:750px){.hero{min-height:80px}.hero h1{font-size:30px}}
+
+/* v0.6b — information hierarchy: timeline first, supporting metrics second. */
+.sidebar{width:184px;padding:71px 14px 24px}
+.sidebar .brand{padding:0 8px}
+.sidebar .nav{margin-top:50px}
+.main{margin-left:184px;width:calc(100% - 184px)}
+.top{height:67px;justify-content:flex-end}
+.content{padding-top:30px}
+.hero{min-height:97px;padding:0 0 20px}
+.launch-strip{margin:0 0 24px}
+.stats{margin:17px 0 24px;gap:10px}
+.stat{min-height:0;display:flex;align-items:center;justify-content:space-between;padding:13px 17px;border-radius:12px;box-shadow:none;background:#fafbf8}
+.stat-label{font-size:11px;color:#839589;display:block}
+.stat-value{font-size:22px;margin:0;letter-spacing:-.3px}
+.stat-value em{font-size:10px;margin-left:5px}
+.calendar-footer{justify-content:flex-end}
+@media(max-width:1040px){.sidebar{width:160px}.main{margin-left:160px;width:calc(100% - 160px)}}
+@media(max-width:750px){.sidebar{width:70px;padding:70px 8px 15px}.main{margin-left:70px;width:calc(100% - 70px)}.stat{padding:12px}.stats{grid-template-columns:repeat(3,minmax(0,1fr))}.stats .stat:last-child{display:flex}}
+@media(max-width:560px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stats .stat:last-child{display:none}}
