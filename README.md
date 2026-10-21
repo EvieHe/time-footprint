@@ -1,5 +1,7 @@
 # 时迹 · Time Footprint
 
+**Desktop + Mobile:** Electron for macOS/Windows and Capacitor 8 for iOS/Android. Mobile installation steps and current limitations are in [docs/mobile.md](docs/mobile.md).
+
 A calm, local-first Electron desktop app for recording what actually happened in your day, inspired by Tide's immersive design language, but with a distinctive **24-hour time footprint** as the home screen.
 
 ## Core product flow
