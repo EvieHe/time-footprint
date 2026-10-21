@@ -64,3 +64,9 @@ npm run build   # Vite renderer production build
 - Core tests: `npm test` (Node domain, SQLite integration and synthesized audio).
 - Real Electron GUI regression suite: `npm run test:e2e` (requires dependencies, Electron runtime and a GUI display; on macOS it can be run locally). This test covers day/week navigation, direct focus start, and mixer open/close. A passing script does **not** by itself validate suspension or macOS notification behavior.
 - Build: `npm run build`. Packaging/notarization and sleep/wake are subject to macOS manual verification.
+
+## iPhone beta / TestFlight
+
+- [iOS simulator CI](https://github.com/EvieHe/time-footprint/actions/workflows/mobile-ios-check.yml): macOS 26 + Xcode 26, builds and tests the Capacitor iOS shell **without signing**. First run [39590201067](https://github.com/EvieHe/time-footprint/actions/runs/39590201067) passed.
+- [TestFlight publishing workflow](https://github.com/EvieHe/time-footprint/actions/workflows/mobile-ios-testflight.yml): **manual and credential-gated**; no Apple-signed IPA or TestFlight invitation exists until Apple Developer + App Store Connect setup is completed.
+- [Exact Apple setup and secure GitHub Secrets instructions](docs/ios-testflight.md).
