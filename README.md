@@ -4,6 +4,18 @@
 
 A calm, local-first Electron desktop app for recording what actually happened in your day, inspired by Tide's immersive design language, but with a distinctive **24-hour time footprint** as the home screen.
 
+## Install on your own iPhone for free
+
+A paid Apple Developer membership and TestFlight are **not required** for personal testing. On a Mac with Xcode 26+ and Node 22+, run:
+
+```bash
+git clone https://github.com/EvieHe/time-footprint.git
+cd time-footprint
+bash scripts/iphone.sh
+```
+
+The helper prepares Capacitor iOS, runs mobile tests, and opens Xcode. Sign in with an ordinary Apple Account, select **Personal Team** under **Signing & Capabilities**, connect your iPhone, then press **Run**. Free signing typically expires in 7 days. [Full step-by-step guide](docs/iphone-free-install.md).
+
 ## Core product flow
 
 **Choose focus / meditation / reading / work → timer starts immediately → immersive space → optional intention → pause/resume → stop immediately → optional reflection → automatic day/week footprint.** There is no mandatory form before starting or after ending.
