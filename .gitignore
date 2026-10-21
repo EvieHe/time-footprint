@@ -9,3 +9,7 @@ release/
 .DS_Store
 .env*
 *.log
+
+# Capacitor native shells generated locally by cap add
+ios/
+android/
