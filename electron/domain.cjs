@@ -6,5 +6,5 @@ function transition(session,action,now=Date.now()){assertTime(now);if(now<sessio
 function activeMillis(s,now=Date.now()){const end=s.endAt??now;const paused=(s.pauses||[]).reduce((sum,p)=>sum+Math.max(0,Math.min(p.endAt??end,end)-p.startAt),0);return Math.max(0,end-s.startAt-paused)}
 function startOfLocalDay(ms){const d=new Date(ms);return new Date(d.getFullYear(),d.getMonth(),d.getDate()).getTime()}
 function splitByLocalDay(s,now=Date.now()){const end=s.endAt??now;let cursor=s.startAt;const output=[];while(cursor<end){const d=new Date(cursor);const next=new Date(d.getFullYear(),d.getMonth(),d.getDate()+1).getTime();const finish=Math.min(end,next);output.push({...s,segmentStart:cursor,segmentEnd:finish,dayKey:`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`});cursor=finish}return output}
-function validateManual({type,startAt,endAt}){assertType(type);assertTime(startAt);assertTime(endAt);if(endAt<=startAt)throw Error('End must follow start')}
+function validateManual({type,startAt,endAt}){assertType(type);assertTime(startAt);assertTime(endAt);if(endAt<=startAt)throw Error('结束时间应晚于开始时间')}
 module.exports={makeSession,transition,activeMillis,splitByLocalDay,validateManual,startOfLocalDay,assertType,assertTime};
