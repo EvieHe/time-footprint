@@ -8,7 +8,7 @@ export function formatDateTimeLocal(timestamp) {
 }
 
 function parseLocalTime(value) {
-  if (typeof value !== 'string' || !/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}$/.test(value)) return NaN;
+  if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(value)) return NaN;
   const ms = new Date(value).getTime();
   // Reject impossible dates and DST gaps that Date might otherwise normalize.
   return Number.isFinite(ms) && formatDateTimeLocal(ms) === value ? ms : NaN;
